@@ -49,14 +49,26 @@ const SutraView = () => {
         {/* Header */}
         {data && (
           <div className="flex justify-between h-10 text-lg font-bold text-darkbrown mx-4">
-            <Link to="/anusarak.png" target="_blank" rel="noopener noreferrer">
-              <div className="flex mt-[2px] gap-1 items-center">
-                Anusarak <ExternalLink size="20px" />
-              </div>
-            </Link>
-            <p className="bg-darkbrown rounded-full text-white flex items-center justify-center w-10 h-10 -mt-1 mb-5">
-              {data.chapter}.{data.number === 0 || data.number === -1 ? "S" : data.number}
-            </p>
+            
+            {/* This will help us to put SM at full right top, when the anusarak was not their */}
+            <div className="w-[140px]"> 
+              {/* Show Anusarak link only if not SM */}
+              {!(data.chapter === 0 && (data.number === 0 || data.number === -1)) && (
+                <Link to="/anusarak.png" target="_blank" rel="noopener noreferrer">
+                  <div className="flex mt-[2px] gap-1 items-center">
+                    Anusarak <ExternalLink size="20px" />
+                  </div>
+                </Link>
+              )}
+            </div>
+
+            {/* It shows SM if any of the Shanti Mantra is selected or else it shows the khanda & sutra number */}
+            <p className="bg-darkbrown rounded-full text-white flex items-center justify-center w-12 h-10 -mt-1 mb-5">
+              {data.chapter === 0 && (data.number === 0 || data.number === -1)
+                ? "SM"
+                : `${data.chapter}.${data.number}`}
+
+            </p >
           </div>
         )}
 

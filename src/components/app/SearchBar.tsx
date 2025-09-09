@@ -104,7 +104,6 @@ const SearchBar = () => {
 
       {searchTerm !== "" && results && (
         <div
-          // className="absolute w-full p-2 flex flex-col gap-2 rounded-md z-10 max-h-[400px] overflow-y-auto"
           className="absolute right-[70px] top-[45px] max-w-[1060px] p-2 flex flex-col gap-1 rounded-lg z-50 max-h-[445px] overflow-y-auto shadow-xl"
           style={{
             backgroundImage: `url(${LightBarImg})`,
@@ -127,8 +126,7 @@ const SearchBar = () => {
               onMouseLeave={() => setHoveredIndex(null)}
               className="p-2 w-full text-darkbrown font-semibold hover:text-white flex items-center hover:cursor-pointer hover:rounded-sm"
               style={{
-                backgroundImage:
-                  hoveredIndex === index ? `url(${DarkBarImg})` : "none",
+                backgroundImage: hoveredIndex === index ? `url(${DarkBarImg})` : "none",
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
               }}
@@ -147,9 +145,12 @@ const SearchBar = () => {
                 {result.text}
               </p>
 
+              {/* It shows SM if any of the Shanti Mantra is selected or else it shows the khanda & sutra number */}
               <p className="flex-[2] text-right leading-tight">
-                ॥ {result.chapter}.
-                {result.sutra_no === 0 || result.sutra_no === -1 ? "S" : result.sutra_no} ॥
+                 ॥ {result.chapter === 0 && (result.sutra_no === 0 || result.sutra_no === -1)
+                   ? "SM"
+                   : `${result.chapter}.${result.sutra_no}`} ॥
+
                 <br />
                 <span className="text-sm">({result.mode.replace("_", " ")})</span>
               </p>

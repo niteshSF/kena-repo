@@ -90,11 +90,11 @@ const RightScroll = ({ isCommentary }: { isCommentary: boolean }) => {
           </TexturedButton>
         ))}
 
-        {/* Duplicate Shanti Mantra button */}
+        {/* Changes thr Shanti Mantra button as per the Last  */}
         <TexturedButton
           className="mt-6 w-52 h-12 flex items-center justify-center"
-          selected={sutra_no === 0 && chapter === 0}
-          onClick={() => handleSutraClick(0, 0)}
+          selected={sutra_no === -1 && chapter === 0}   // made it as sutra no -1, so as it show tha data as stored in the database
+          onClick={() => handleSutraClick(-1, 0)}
         >
           Shanti Mantra
         </TexturedButton>

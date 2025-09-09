@@ -97,10 +97,11 @@ const InterpretationView = () => {
           Vishishtadvaita
         </TexturedButton>
 
-        {/* <p className="bg-darkbrown rounded-sm text-white flex items-center justify-center font-bold w-20 h-10 mt-1 ml-10"> */}
-        <p className="bg-darkbrown rounded-full text-white flex items-center justify-center font-bold w-10 h-10 -mt-2 ml-12">
-          {khanda_no}.
-          {sutra_no === 0 || sutra_no === -1 ? "S" : sutra_no}
+        {/* It shows SM if any of the Shanti Mantra is selected or else it shows the khanda & sutra number */}
+        <p className="bg-darkbrown rounded-full text-white flex items-center justify-center font-bold w-12 h-10 -mt-2 ml-12">
+            {khanda_no ===0 && (sutra_no === 0 || sutra_no === -1)
+              ? "SM"
+              : `${khanda_no}.${sutra_no}`}
         </p>
 
 
